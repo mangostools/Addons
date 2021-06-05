@@ -1,5 +1,8 @@
-# TWmv
-base builder helper 9000 for Turtle WoW
+# MaNGOS Model Viewer (M3)
+An addon used to view gameobject models, find nearby gameobjects, and manipulate them.
 
+# More work to be done?
+Always! If you have suggestions, please open an issue. If you have a fix/addition, please open a pull request.
 
-![builder](https://imgur.com/gja3Ez6.png)
+# Credits
+Based on the work by CosminPOP for TWmv

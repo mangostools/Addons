@@ -1,6 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
-    <Script file="TWmv.lua"/>
+    <Script file="MaNGOS_MV.lua"/>
 
     <Frame name="CatButtonTemplate" virtual="true">
         <Size>
@@ -30,7 +30,7 @@
                 </Anchors>
                 <Scripts>
                     <OnClick>
-                        CatButton_OnClick(this:GetText())
+                        CatButton_OnClick(self:GetText())
                     </OnClick>
                 </Scripts>
             </Button>
@@ -73,7 +73,7 @@
                 </Anchors>
                 <Scripts>
                     <OnClick>
-                        LoadModelButton_OnClick(this:GetID())
+                        LoadModelButton_OnClick(self:GetID())
                     </OnClick>
                 </Scripts>
             </Button>
@@ -86,7 +86,7 @@
         </Scripts>
     </Frame>
 
-    <Frame name="TWmvGO" hidden="true" toplevel="true" parent="UIParent" movable="true" enableMouse="true">
+    <Frame name="MaNGOSMVGO" hidden="true" toplevel="true" parent="UIParent" movable="true" enableMouse="true">
         <Size>
             <AbsDimension x="380" y="250"/>
         </Size>
@@ -99,7 +99,7 @@
         </Anchors>
         <Layers>
             <Layer level="BACKGROUND">
-                <Texture name="$parentSmallBackground" file="Interface\Addons\TWmv\images\ui_small">
+                <Texture name="$parentSmallBackground" file="Interface\Addons\MaNGOS_Model_Viewer\images\ui_small">
                     <Size>
                         <AbsDimension x="512" y="512"/>
                     </Size>
@@ -237,7 +237,7 @@
                 </Anchors>
                 <Scripts>
                     <OnClick>
-                       DoneGO_OnClick()
+                        DoneGO_OnClick()
                     </OnClick>
                 </Scripts>
             </Button>
@@ -370,23 +370,22 @@
         </Frames>
         <Scripts>
             <OnLoad>
-                this:RegisterForDrag("LeftButton");
-                this:SetMovable(1);
-                this:SetUserPlaced(true);
+                self:RegisterForDrag("LeftButton");
+                self:SetMovable(1);
+                self:SetUserPlaced(true);
             </OnLoad>
             <OnDragStart>
-                this:StartMoving();
+                self:StartMoving();
                 this.isMoving = true;
             </OnDragStart>
             <OnDragStop>
-                this:StopMovingOrSizing();
+                self:StopMovingOrSizing();
                 this.isMoving = false;
             </OnDragStop>
         </Scripts>
     </Frame>
 
-    <Frame name="TWmv" hidden="true" toplevel="true" parent="UIParent" movable="true"
-           enableMouse="true">
+    <Frame name="MaNGOSMV" hidden="true" toplevel="true" parent="UIParent" movable="true" enableMouse="true">
         <Size>
             <AbsDimension x="1024" y="530"/>
         </Size>
@@ -399,7 +398,7 @@
         </Anchors>
         <Layers>
             <Layer level="BACKGROUND">
-                <Texture name="$parentUILeft" file="Interface\Addons\TWmv\images\ui_left">
+                <Texture name="$parentUILeft" file="Interface\Addons\MaNGOS_Model_Viewer\images\ui_left">
                     <Size>
                         <AbsDimension x="512" y="512"/>
                     </Size>
@@ -411,7 +410,7 @@
                         </Anchor>
                     </Anchors>
                 </Texture>
-                <Texture name="$parentUIRight" file="Interface\Addons\TWmv\images\ui_right">
+                <Texture name="$parentUIRight" file="Interface\Addons\MaNGOS_Model_Viewer\images\ui_right">
                     <Size>
                         <AbsDimension x="512" y="512"/>
                     </Size>
@@ -429,7 +428,7 @@
             </Layer>
             <Layer level="ARTWORK">
                 <FontString name="$parentTitleText" inherits="GameFontNormal"
-                            text="Turtle WoW Model Viewer Base Builder Helper 9000">
+                            text="MaNGOS Model Viewer [M3] Cataclysm 4.3.4">
                     <Size>
                         <AbsDimension x="512" y="14"/>
                     </Size>
@@ -497,7 +496,7 @@
                 </Anchors>
                 <Layers>
                     <Layer level="BACKGROUND">
-                        <Texture file="Interface\Icons\inv_misc_stonetablet_05">
+                        <Texture file="Interface\Icons\inv_misc_food_42">
                             <Size x="21" y="21"/>
                             <Anchors>
                                 <Anchor point="TOPLEFT">
@@ -519,21 +518,21 @@
                 <HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
                 <Scripts>
                     <OnLoad>
-                        this:RegisterForClicks("RightButtonUp")
-                        this:RegisterForDrag("LeftButton")
-                        this:SetClampedToScreen(true)
+                        self:RegisterForClicks("RightButtonUp")
+                        self:RegisterForDrag("LeftButton")
+                        self:SetClampedToScreen(true)
                     </OnLoad>
                     <OnDragStart>
-                        this:LockHighlight()
-                        this:StartMoving()
+                        self:LockHighlight()
+                        self:StartMoving()
                     </OnDragStart>
                     <OnDragStop>
-                        this:UnlockHighlight()
-                        this:StopMovingOrSizing()
+                        self:UnlockHighlight()
+                        self:StopMovingOrSizing()
                     </OnDragStop>
                     <OnEnter>
                         GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT", 0, 0)
-                        GameTooltip:AddLine('TWmv', 1, 1, 1)
+                        GameTooltip:AddLine('MaNGOS_Model_Viewer', 1, 1, 1)
                         GameTooltip:AddLine('Left-click to toggle frame')
                         GameTooltip:Show()
                     </OnEnter>
@@ -541,9 +540,7 @@
                         GameTooltip:Hide()
                     </OnLeave>
                     <OnMouseUp>
-                        if arg1 == "LeftButton" then
-                        TWMVToggleMainWindow()
-                        end
+                        MaNGOS_ToggleMainWindow()
                     </OnMouseUp>
                 </Scripts>
             </Button>
@@ -561,7 +558,7 @@
                 </Anchors>
                 <Scripts>
                     <OnVerticalScroll>
-                        FauxScrollFrame_OnVerticalScroll(22, CatsList_Update);
+                        FauxScrollFrame_OnVerticalScroll(self, offset, 22, CatsList_Update);
                     </OnVerticalScroll>
                 </Scripts>
             </ScrollFrame>
@@ -579,7 +576,7 @@
                 </Anchors>
                 <Scripts>
                     <OnVerticalScroll>
-                        FauxScrollFrame_OnVerticalScroll(22, ModelsList_Update);
+                        FauxScrollFrame_OnVerticalScroll(self, offset, 22, ModelsList_Update);
                     </OnVerticalScroll>
                 </Scripts>
             </ScrollFrame>
@@ -605,12 +602,11 @@
                         </Offset>
                     </Anchor>
                 </Anchors>
-                <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
-                          tile="false">
+                <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" tile="false">
                 </Backdrop>
                 <Scripts>
                     <OnMouseWheel>
-                        <!--                                MVmodelWHeel(this, arg1)-->
+                        <!-- MVmodelWHeel(this, arg1) -->
                     </OnMouseWheel>
                 </Scripts>
                 <Frames>
@@ -680,14 +676,14 @@
                 </Backdrop>
                 <Scripts>
                     <OnShow>
-                        this:ClearFocus();
+                        self:ClearFocus();
                     </OnShow>
-                    <OnEnterPressed>
-                        SearchBox_OnEnterPressed(this:GetText());
-                        this:SetText("");
+                    <OnEnterPressed> 
+                        SearchBox_OnEnterPressed(self:GetText());
+                        self:SetText("");
                     </OnEnterPressed>
                     <OnEscapePressed>
-                        this:ClearFocus();
+                        self:ClearFocus();
                     </OnEscapePressed>
                 </Scripts>
                 <FontString inherits="ChatFontNormal" bytes="256"/>
@@ -696,20 +692,19 @@
         </Frames>
         <Scripts>
             <OnLoad>
-                this:RegisterForDrag("LeftButton");
-                this:SetMovable(1);
-                this:SetUserPlaced(true);
+                self:RegisterForDrag("LeftButton");
+                self:SetMovable(1);
+                self:SetUserPlaced(true);
             </OnLoad>
             <OnDragStart>
-                this:StartMoving();
+                self:StartMoving();
                 this.isMoving = true;
             </OnDragStart>
             <OnDragStop>
-                this:StopMovingOrSizing();
+                self:StopMovingOrSizing();
                 this.isMoving = false;
             </OnDragStop>
         </Scripts>
     </Frame>
 
 </Ui>
-
