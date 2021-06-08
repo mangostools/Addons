@@ -3,7 +3,9 @@ An addon used to view gameobject models, find nearby gameobjects, and manipulate
 Please use the appropriate addon for your version (M0, M1, M2, M3).
 
 # 📑 How to Use
-Download the files. The MaNGOS_Model_Viewer directory should be placed into your Addons directory.
+- Download all of the files (using the web zip format or by cloning the repo).
+- Open the directory of the MaNGOS core that you are using (MaNGOS0, MaNGOS1, MaNGOS2, MaNGOS3).
+- Copy/move the "MaNGOS_Model_Viewer" directory into your Interface/Addons/ directory in your client.
 
 # 💻 Scripts
 I've included a "Scripts" directory, this is NOT required for using the addon. It's a quick script that I used to build m#data.lua.
