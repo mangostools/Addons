@@ -1,0 +1,9 @@
+## Interface: 11200
+## Title: MaNGOS Model Viewer
+## Notes: Provides in-game model viewer
+## Author: Fyre
+## Version: 0.0.0.1
+##SavedVariables:
+m0data.lua
+MaNGOS_MV.lua
+MaNGOS_MV.xml
