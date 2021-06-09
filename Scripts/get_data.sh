@@ -21,14 +21,22 @@
 
 
 ### Choose one below as desired.
-version="m0data"
-# version="m1data"
-# version="m2data"
-# version="m3data"
+version=0
+# version=1
+# version=2
+# version=3
+
+# the m0data file needed for the addon data.
+lua_file="m${version}data.lua"
 
 # temp file is just used to remove the trailing comma at the end later on. Will be removed automatically by the script.
-temp_lua_file="${version}.temp"
-lua_file="${version}.lua"
+temp_lua_file="${lua_file}.temp"
+
+# GameObjectDisplayInfo.dbc.csv filename
+godi_name="GameObjectDisplayInfo.dbc.${version}.csv"
+
+# gameobject_template.csv filename
+got_name="gameobject_template.${version}.csv"
 
 # header to lua file
 printf "${version} = {\n" > $temp_lua_file
@@ -45,12 +53,12 @@ do
             filename=$(echo $ModelName | sed 's,\\,\\\\\\\\,g')
             break
         fi
-    done < GameObjectDisplayInfo.dbc.csv
+    done < $godi_name
 
     if ([[ ! -z $filename ]]); then
         printf "{ ['id'] = \"${id}\", ['short'] = \"${short}\", ['filename'] = \"${filename}\" },\n" >> $temp_lua_file
     fi
-done < gameobject_template_202106062138.csv
+done < $got_name
 
 # remove the last trailing comma.
 sed '$ s/,$//' $temp_lua_file > $lua_file
