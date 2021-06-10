@@ -1,4 +1,4 @@
-1 = {
+m1data = {
 { ['id'] = "31", ['short'] = "Old Lion Statue", ['filename'] = "World\\Azeroth\\Elwynn\\PassiveDoodads\\Statue\\LionStatue.mdx" },
 { ['id'] = "32", ['short'] = "Sunken Chest", ['filename'] = "World\\Generic\\ActiveDoodads\\Chest01\\Chest01.mdx" },
 { ['id'] = "33", ['short'] = "Locked Chest", ['filename'] = "World\\Generic\\ActiveDoodads\\Chest02\\Chest02.mdx" },

@@ -1,4 +1,4 @@
-2 = {
+m2data = {
 { ['id'] = "0", ['short'] = "The Raven's Claw,", ['filename'] = "World\\Azeroth\\Duskwood\\PassiveDoodads\\Tombs\\WoodCross02.mdx" },
 { ['id'] = "1", ['short'] = "Quilboar Watering Hole", ['filename'] = "World\\Generic\\PassiveDoodads\\Fruits\\Fruit_Banana.mdx" },
 { ['id'] = "2", ['short'] = "Spring Well", ['filename'] = "World\\Generic\\PassiveDoodads\\Fruits\\Fruit_Banana.mdx" },

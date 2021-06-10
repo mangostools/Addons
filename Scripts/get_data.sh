@@ -39,7 +39,7 @@ godi_name="GameObjectDisplayInfo.dbc.${version}.csv"
 got_name="gameobject_template.${version}.csv"
 
 # header to lua file
-printf "${version} = {\n" > $temp_lua_file
+printf "m${version}data = {\n" > $temp_lua_file
 
 # body of lua file
 while IFS=, read -r entry displayId name
