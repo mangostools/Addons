@@ -92,7 +92,6 @@ mv:SetScript('OnEvent', function(self, event, ...)
         getglobal('MaNGOSMVAddGOButton'):Disable()
 
         gModel = getglobal('mvmodel')
-        gModel:SetModel("World\\Azeroth\\Elwynn\\PassiveDoodads\\jugs\\jug02.mdx")
 
         gModel:SetScript('OnMouseUp', function(self)
             gModel:SetScript('OnUpdate', nil)
