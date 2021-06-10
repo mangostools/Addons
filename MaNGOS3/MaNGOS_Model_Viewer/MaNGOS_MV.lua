@@ -66,7 +66,7 @@ mv:SetScript('OnEvent', function(self, event, ...)
             modelName = modelName[1]
 
             local filename = 'filename'
-            local short = 'short'
+            local short = '<UNKNOWN>'
 
             for cat, data in next, mv.cats do
                 for index, model in next, data do
