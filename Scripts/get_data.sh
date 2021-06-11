@@ -20,23 +20,23 @@
 ################################ END INFORMATION ################################
 
 
-### Choose one below as desired.
+# Use an integer (0-->3) for the MaNGOS Core Version that you are extracting data for.
 version=0
-# version=1
-# version=2
-# version=3
 
-# the m0data file needed for the addon data.
+# the m#data file needed for the addon data.
 lua_file="m${version}data.lua"
 
 # temp file is just used to remove the trailing comma at the end later on. Will be removed automatically by the script.
 temp_lua_file="${lua_file}.temp"
 
 # GameObjectDisplayInfo.dbc.csv filename
-godi_name="GameObjectDisplayInfo.dbc.${version}.csv"
+godi_name="GameObjectDisplayInfo.dbc.m${version}.csv"
 
 # gameobject_template.csv filename
-got_name="gameobject_template.${version}.csv"
+got_name="gameobject_template.m${version}.csv"
+
+# if a displayId does not match the Id, then an "error" model should be used.
+error_filename="SPELLS\\\\\\\\ErrorCube.mdx"
 
 # header to lua file
 printf "m${version}data = {\n" > $temp_lua_file
@@ -45,17 +45,23 @@ printf "m${version}data = {\n" > $temp_lua_file
 while IFS=, read -r entry displayId name
 do
     id=$entry
-    short=$(echo $name | sed 's/["]//g')
+    short=$(echo $name | sed 's/["]//g') # Removes double quotation marks from game object names.
     
     while IFS=, read -r Id ModelName
     do
         if ([ $Id = $displayId ]); then
-            filename=$(echo $ModelName | sed 's,\\,\\\\\\\\,g')
+            filename=$(echo $ModelName | sed 's,\\,\\\\\\\\,g') # Fix backslashes in file names.
             break
+        else
+            filename=${error_filename} # Id and displayId could not be matched. Provide "ErrorCube" model.
         fi
     done < $godi_name
 
-    if ([[ ! -z $filename ]]); then
+    if ([[ ! -z $filename ]]); then # If no filename was provided, then don't include it into the data list.
+        if ([[ -z $short ]]); then
+            short="<MISSING>" # No short was provided.
+        fi
+        
         printf "{ ['id'] = \"${id}\", ['short'] = \"${short}\", ['filename'] = \"${filename}\" },\n" >> $temp_lua_file
     fi
 done < $got_name
