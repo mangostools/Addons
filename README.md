@@ -3,7 +3,7 @@ An addon used to view gameobject models, find nearby gameobjects, and manipulate
 Please use the appropriate addon for your version (M0, M1, M2, M3).
 
 # 🎮 Demonstration
-![caption](https://s6.gifyu.com/images/m2-px-238-example-lowest-quality.md.gif)
+![GIF Demonstration](https://github.com/i-am-fyre/repo-gifs/blob/main/m2-px-238-example-lowest-quality.gif)
 
 # 📑 How to Use
 - Download all of the files (using the web zip format or by cloning the repo).
