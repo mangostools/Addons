@@ -18,3 +18,6 @@ Always! If you have suggestions, please open an issue. If you have a fix/additio
 
 # 📨 Credits
 Based on the work by CosminPOP for TWmv
+
+Contributors:
+- [i-am-fyre](https://github.com/i-am-fyre)
